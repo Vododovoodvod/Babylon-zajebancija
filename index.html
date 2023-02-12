@@ -58,6 +58,7 @@
 
             //Sphere action
             sphere.actionManager = new BABYLON.ActionManager(scene);
+            // Change color
             sphere.actionManager.registerAction(
                 new BABYLON.SetValueAction(
                     BABYLON.ActionManager.OnPickDownTrigger,
@@ -74,6 +75,24 @@
                     new BABYLON.Color3(0,0,1)
                 )
             );
+            //highlight
+            sphere.actionManager.registerAction(
+                new BABYLON.SetValueAction(
+                    BABYLON.ActionManager.OnPointerOverTrigger,
+                    sphere,
+                    "scaling",
+                    new BABYLON.Vector3(1.1, 1.1, 1.1)
+                )
+            )
+            sphere.actionManager.registerAction(
+                new BABYLON.SetValueAction(
+                    BABYLON.ActionManager.OnPointerOutTrigger,
+                    sphere,
+                    "scaling",
+                    new BABYLON.Vector3(1.0, 1.0, 1.0)
+                )
+            )
+            
 
             // Built-in 'ground' shape.
             const ground = BABYLON.MeshBuilder.CreateGround("ground", 
